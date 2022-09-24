@@ -18,4 +18,5 @@ public:
 	void load_from_file();
 	void delete_human();
 	void exit_from_programm();
+	void average_stud();
 };

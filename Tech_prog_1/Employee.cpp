@@ -106,3 +106,4 @@ void Employee::redact_str(int num_str, string red_str)
         break;
     }
 }
+

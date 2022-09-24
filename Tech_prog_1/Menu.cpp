@@ -26,11 +26,35 @@ void Menu::main_menu()
         case 6:
             delete_human();
             break;
+        case 7:
+            average_stud();
+            break;
         default:
             exit_from_programm();
             break;
         }
     }
+}
+
+void Menu::average_stud()
+{
+    double a;
+    cout << "\nEnter ball" << endl;
+    cin >> a;
+    try
+    {
+        if (list.get_size() == 0)
+        {
+            throw "There's nothing to show.";
+        }
+        for (int i = 0; i < list.get_size(); i++)
+        {
+            if ((list[i]->averball(a)) == true) list[i]->show();
+        }
+    }
+    catch (const char* ex) { cout << ex << endl; }
+    system("pause");
+
 }
 
 int Menu::show_options()
@@ -43,6 +67,8 @@ int Menu::show_options()
     cout << "4 - Save all changes to the file" << endl;
     cout << "5 - Load data from the file" << endl;
     cout << "6 - Delete a human" << endl;
+    //To work correctly, you need to enter a real number, with two numbers after the dot
+    cout << "7 - Output of students with the entered average ball" << endl;
     cout << "0 - Exit" << endl;
     cout << "->  ";
     cin >> c1;

@@ -27,6 +27,6 @@ public:
 	virtual void rewrite(); 
 	virtual void saving();
 	virtual void redact_str(int num_str, string red_str);
-
+	virtual bool averball(double a){ return false; };
 };
 

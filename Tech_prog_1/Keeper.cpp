@@ -163,8 +163,9 @@ void Keeper::load()
 			student = new Student;
 			student->set_name(a);
 			student->set_group(b);
-			student->set_course(c);
-			student->set_av_ball(d);
+			student->set_spec(c);
+			student->set_course(d);
+			student->set_av_ball(e);
 			humans = student;
 			insert(humans);
 		}

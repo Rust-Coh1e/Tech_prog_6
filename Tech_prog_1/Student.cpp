@@ -116,3 +116,14 @@ void Student::redact_str(int num_str, string red_str)
         break;
     }
 }
+
+bool Student::averball(double a)
+{
+    double b;
+    b = stof(this->get_av_ball());
+    if (abs(a - b) < 0.0001)
+    {
+        return true;
+    }
+    return false;
+}
