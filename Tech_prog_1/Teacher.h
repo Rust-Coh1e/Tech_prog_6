@@ -1,5 +1,5 @@
 #pragma once
-#include "Human.h"
+#include "lib.h"
 class Teacher :
     public Human
 {

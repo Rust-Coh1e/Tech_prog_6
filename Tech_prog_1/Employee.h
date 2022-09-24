@@ -1,7 +1,6 @@
 #pragma once
-#include "Human.h"
-class Employee :
-    public Human
+#include "lib.h"
+class Employee : public Human
 {
 private:
     string name;
