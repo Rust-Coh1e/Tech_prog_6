@@ -61,11 +61,11 @@ void Employee::rewrite()
     cout << "Person: Employee" << endl;
     cout << "Input new name: ";
     getline(cin, name);
-    cout << "Input new group: ";
+    cout << "Input new post: ";
     getline(cin, post);
-    cout << "Input new spec: ";
+    cout << "Input new telephone number: ";
     getline(cin, tnumber);
-    cout << "Input new course: ";
+    cout << "Input new area of resnosible: ";
     getline(cin, respons);
     cout << "------------------------------------" << endl;
 }
