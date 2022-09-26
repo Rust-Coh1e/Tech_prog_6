@@ -86,6 +86,8 @@ void Menu::show_all_humans()
         }
         for (int i = 0; i < list.get_size(); i++)
         {
+            cout << "_" << endl;
+            cout << i + 1 << "|";
             list[i]->show();
         }
     }
@@ -114,10 +116,32 @@ void Menu::change_data()
         cin.ignore(32767, '\n');
         cout << "What do you want to put in this string?" << endl;
         cout << "->  ";
-        getline(cin, redact);
-        list[c2 - 1]->redact_str(c3, redact);
-        cout << "The string was redacted." << endl;
-        //throw std::invalid_argument("Required");
+        if (c3 == 5)
+        {
+            bool fl = false;
+            while (fl == false)
+            {
+                try 
+                {
+
+                    getline(cin, redact);
+                    float f = stof(redact);
+                    fl = true;
+                }
+                catch (...)
+                {
+                    cout << "Enter the number" << endl;
+
+                }
+            }
+            list[c2 - 1]->redact_str(c3, redact);
+        }
+        else
+        {
+            getline(cin, redact);
+            list[c2 - 1]->redact_str(c3, redact);
+            cout << "The string was redacted." << endl;
+        }
     }
     catch (const char* ex) { cout << ex << endl; }
     system("pause");
@@ -201,19 +225,29 @@ void Menu::delete_human()
     cout << "What person do you want to change (from 1 to " << list.get_size() << ")?" << endl;
     for (int i = 0; i < list.get_size(); i++)
     {
+        cout << "_" << endl;
+        cout << i + 1 << "|";
         list[i]->show();
     }
     cout << "->  ";
     cin >> c2;
-
-    if ((c2 < 1) || (c2 > list.get_size()))
+    c2 = list.get_size() - c2 + 1;
+    try {
+        if ((c2 < 1) || (c2 > list.get_size()))
+        {
+            throw "Incorrect number!";
+        }
+        list.remove(c2 - 1);
+        cout << "The chosen person was deleted." << endl;
+        system("pause");
+    }
+    catch (const char* i)
     {
-        throw "Incorrect number!";
+        cout << i << endl;
+
     }
 
-    list.remove(c2 - 1);
-    cout << "The chosen person was deleted." << endl;
-    system("pause");
+    
 }
 
 void Menu::exit_from_programm()

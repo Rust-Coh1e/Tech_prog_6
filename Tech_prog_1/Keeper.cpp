@@ -65,24 +65,50 @@ void Keeper::insert(Human* new_data)
 
 void Keeper::remove(int index)
 {
-	if (m_size == 0)
+	//if (m_size == 0 || head == NULL)
+	//{
+	//	throw "Nothing to delete!";
+	//	system("pause");
+	//}
+	//int counter = 0;
+	//while (counter < index - 1)
+	//{
+	//	head = head->next;
+	//	counter++;
+	//}
+
+	///*Elem* prev = head;
+	//prev->next->m_data->~Human();
+	//prev->next->next;
+	//delete(prev->next);
+	//--m_size;*/
+	if ((head != NULL) && (index < m_size) && (index >= 0)) // если по этому номеру что-то лежит и этот элемент внутри списка
 	{
-		throw "Nothing to delete!";
-		system("pause");
-	}
-	int counter = 0;
-	while (counter < index - 1)
-	{
-		head = head->next;
-		counter++;
+		// Mass - объекты, которые хранятся в списке
+		Elem* temp = head, * helping = head;
+
+		for (int i = 0; i < index; i++)
+		{
+			helping = temp; // предыдущее значение temp
+			temp = temp->next;
+		}
+
+		if (temp == head) // если элемент который надо удалить первый
+		{
+			head = temp->next;
+		}
+		else
+		{
+			helping->next = temp->next;
+		}
+		temp->m_data->~Human();
+		delete(temp);
+		m_size--; // уменьшаем размер списка
 	}
 
-	Elem* prev = head;
-	prev->next->m_data->~Human();
-	prev->next->next;
-	delete(prev->next);
-	--m_size;
 }
+
+
 
 void Keeper::save()
 {

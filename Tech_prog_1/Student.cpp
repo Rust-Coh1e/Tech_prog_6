@@ -72,8 +72,26 @@ void Student::rewrite()
     getline(cin, spec);
     cout << "Input new course: ";
     getline(cin, course);
+    
+    bool fl = false;
+    string a;
     cout << "Input new av_ball: ";
-    getline(cin, av_ball);
+    while (fl == false)
+    {
+        try {
+            
+            getline(cin, a);
+            float f = stof(a);
+            fl = true;
+        }
+        catch (...)
+        {
+            cout << "Enter the number" << endl;
+           
+        }
+    }
+    av_ball = a;
+    
     cout << "------------------------------------" << endl;
 }
 
